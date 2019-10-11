@@ -1,38 +1,35 @@
-<!-- <div class="login-reg-panel">
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Ionic 4 Select & Crop Image
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding text-center>
+  <ion-avatar item-end>
+    <img [src]="imgPreview" (click)="getPhoto()">
+  </ion-avatar>
+  
+  <ion-button (click)="selectImage()">
+    Pick Image to Crop
+  </ion-button>
+ 
+  <h5 *ngIf="croppedImagepath.length">Cropped Image</h5>
+ 
+  <p *ngIf="isLoading">Loading ...</p>
+ 
+  <img [src]="croppedImagepath" />
+ 
+</ion-content> -->
+<!-- <ion-content padding>
 
-        <div class="register-info-box">
-            <img src="../../../../assets/images/ZF_Blue_Small.svg" class="logo" />
-        </div>
-        <app-loading-spinner [loadingType]="'ripple'" *ngIf="loginloading"></app-loading-spinner>
+<ion-avatar item-end>
+  <img src="{{imgPreview}}" (click)="getPhoto()">
+</ion-avatar>
+</ion-content> -->
 
-        <div class="white-panel">
-            <div class="login-show">
-                <div class="login-title">
-                    <img src="../../../../assets/images/@logo.svg" class="login_symbol" />
-                    <span>Associate Login</span>
-                </div>
-                <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    <input type="text" placeholder="User Name" class="form-control" [(ngModel)]="loginData.username"
-                        name="username" required>
-                </div>
-                <div class="password-sec"><i class="fa fa-keyboard-o" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" class="form-control" [(ngModel)]="loginData.password"
-                        name="password" required value="Abhay">
-                </div>
-            </div>
-
-        </div>
-        <div class="signin-sec">
-
-            <input type="submit" value="">
-        </div>
-    </form>
-</div> -->
 <div class="wrapper">
-  <div class="sidebar">
-    <!-- <app-sidebar-cmp></app-sidebar-cmp> -->
-  </div>
   <div class="main-panel">
     <div class="main-content">
       <div class="container-fluid">
@@ -44,17 +41,14 @@
                 <div class="org-back"></div>
 
                 <div class="login-show">
-                  <div class="org-mini-logo">
-                    <!-- <img src="../../../../assets/images/zf_logo.svg" class="login_symbol" /> -->
-                  </div>
+                  <!-- <div class="org-mini-logo">
+                    <img src="" class="login_symbol" />
+                  </div> -->
                   <div class="login-title">
-                    <!-- <img src="../../../../assets/images/@logo.svg" class="login_symbol" /> -->
+                    <!-- <img src="" class="login_symbol" /> -->
                     <span>Login</span>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    <!-- <input type="text" placeholder="User Name" class="form-control" 
-                      name="username" required> -->
-
                     <input type="tel" formControlName="phonenumber" class="form-control" placeholder="तुमचे मोबाइल नंबर"
                       [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
                     <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
@@ -74,11 +68,6 @@
                     <a routerLink="/register" class="btn btn-link"  style="color: #fff;">Register</a>
                   </div>
                 </div>
-
-                <!-- <div class="signin-sec">
-      
-                  <input type="submit" value="">
-              </div> -->
               </div>
             </div>
           </form>
@@ -88,49 +77,3 @@
   </div>
 </div>
 
-
-
-<!-- 
-<h2>Register</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="firstName">First Name</label>
-    <input type="text" formControlName="firstName" class="form-control"
-      [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-      <div *ngIf="f.firstName.errors.required">First Name is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="lastName">Last Name</label>
-    <input type="text" formControlName="lastName" class="form-control"
-      [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" formControlName="username" class="form-control"
-      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-      <div *ngIf="f.username.errors.required">Username is required</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" formControlName="password" class="form-control"
-      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Password is required</div>
-      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-      Register
-    </button>
-    <a routerLink="/login" class="btn btn-link">Cancel</a>
-  </div>
-</form> -->

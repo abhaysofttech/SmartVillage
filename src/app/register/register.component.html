@@ -50,6 +50,9 @@
                   <div class="login-title">
                     <!-- <img src="../../../../assets/images/@logo.svg" class="login_symbol" /> -->
                     <span>Register</span>
+                    <ion-avatar item-end>
+                      <img [src]="croppedImagepath" (click)="selectImage()">
+                    </ion-avatar>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
                     <!-- <input type="text" placeholder="User Name" class="form-control" 

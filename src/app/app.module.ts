@@ -15,6 +15,11 @@ import { JwtInterceptor, ErrorInterceptor, BackendProvider } from './_helpers';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './_modules';
 import { LoginComponent } from './login/login.component';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,11 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule
   ],
   providers: [
+    ImagePicker,
+    Crop,
+    Camera,
+    File,
+    Base64,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

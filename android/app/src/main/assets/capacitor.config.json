@@ -1,0 +1,7 @@
+{
+  "appId": "com.aklogical.smartvillage",
+  "appName": "SmartVillage+",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
