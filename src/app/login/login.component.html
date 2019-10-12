@@ -65,8 +65,15 @@
 
                   <div class="signin-sec">
                     <input type="submit" [disabled]="loading" class="form-control" name="Connect" value="Connect">
-                    <a routerLink="/register" class="btn btn-link"  style="color: #fff;">Register</a>
                   </div>
+
+                  <div class="signin-sec reg-btn">
+                      <span class="reg-panel"  style="color: #fff;">If new user then click on register button</span>
+
+                    <input type="button" [disabled]="loading" class="form-control " routerLink="/register" name="Connect" value="REGISTER">
+                  </div>
+
+                  
                 </div>
               </div>
             </div>

@@ -44,14 +44,16 @@
                 <div class="org-back"></div>
 
                 <div class="login-show">
-                  <div class="org-mini-logo">
-                    <!-- <img src="../../../../assets/images/zf_logo.svg" class="login_symbol" /> -->
-                  </div>
-                  <div class="login-title">
+
+                  
+                  <div class="reg-title ">
                     <!-- <img src="../../../../assets/images/@logo.svg" class="login_symbol" /> -->
                     <span>Register</span>
                     <ion-avatar item-end>
                       <img [src]="croppedImagepath" (click)="selectImage()">
+                      <ion-icon name="camera" class="camera-icon"></ion-icon>
+                      <!-- <i class="fas fa-camera"></i> -->
+                      <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
                     </ion-avatar>
                   </div>
                   <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -92,10 +94,9 @@
                     </div>
                   </div>
 
-                  <div class="signin-sec">
-                    <input type="submit" [disabled]="loading" class="form-control" name="Connect" value="Connect">
-
-                    <a routerLink="/login" class="btn btn-link" style="color: #fff;">Cancel</a>
+                  <div class="signin-sec margin-top">
+                    <input type="submit" [disabled]="loading" class="form-control connect-btn" name="Connect" value="Connect">
+                    <input type="button" [disabled]="loading" class="form-control back-btn" name="Back" routerLink="/login" value="Back">
                   </div>
                 </div>
 

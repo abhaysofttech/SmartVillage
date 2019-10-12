@@ -280,7 +280,7 @@ body {
   .login-sec {
     width: 100%;
     margin: 5px 0;
-    padding: 5px 11px 4px 7px;
+    padding: 1px 11px 0px 2px;
     outline: none;
     border-radius: 51px;
     background: #fff;
@@ -289,10 +289,10 @@ body {
     align-items: center;
     border: 1px solid #ccc;
     i {
-      padding: 1px;
-      font-size: 2rem;
-      color: #053463;
-      padding-right: 8px;
+      padding: 7px;
+    font-size: 1.5rem;
+    color: #053463;
+    padding-right: 8px;
     }
     input[type="text"] {
       background: transparent;
@@ -377,17 +377,68 @@ body {
         height: 100%;
         width: 100%;
         float: left;
-        background-image: linear-gradient(90deg, #087198, #2c4d8e);
+        background-position: center;
+        background-size: cover;
+        background-image: linear-gradient(90deg, rgba(8, 139, 152, 0.6392156862745098), rgba(44, 77, 142, 0.48)),url('../../assets/imgs/background.jpg');
     }
     .login-show{
-      padding: 2rem;
-      padding-top: 0rem;
+      padding: 1rem;
+      padding-top: 3rem;
+    }
+    .reg-panel{
+      color: #fff;
+      font-size: 14px;
+      // margin-top: 99px !important;
+      // text-align: center !important;
+       position: absolute; 
+       bottom: 4rem;
+       left: 0; 
+       right: 0; 
+    }
+    .reg-btn{
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      line-height: 15px;
+      text-align: center;
     }
     .login-title{
       span{
         color: #fff;
     
       }
+     
+    }
+    .reg-title{
+      text-align: center;
+      padding-bottom: 10px;
+      margin: 0 auto;
+      color: #fff;
+
+      ion-avatar{margin: 0 auto;
+        margin-top: 10px;
+      position: relative;
+      .camera-icon{
+        font-size: 1.2rem;
+        position: absolute;
+        bottom: 2px;
+        right: 6px;
+        color: #0a70a7;
+      }
+    }
+    }
+    .connect-btn{
+      width: calc(60% - 5px) !important;
+      margin-right: 5px !important;
+    }
+    .back-btn{
+      width: 40% !important;
+      background-color: #052a3e !important;
+    }
+  
+    .margin-top{
+      margin-top: 10px;
     }
 }
 /* Css end for the media query *********************/
