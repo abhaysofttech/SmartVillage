@@ -20,10 +20,11 @@ const routes: Routes = [
   {
     path:'complaint',
     loadChildren:() => import('./_modules/complaint-box/complaint-box.module').then(m => m.ComplaintBoxModule)
-  },
+  }
+  // ,
 
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' },
+  // // otherwise redirect to home
+  // { path: '**', redirectTo: '' },
   
 ];
 

@@ -8,9 +8,11 @@ import { AtikramanComponent } from './atikraman/atikraman.component';
 import { AtikramanRegtokanComponent } from './atikraman-regtokan/atikraman-regtokan.component';
 import { CompboxListComponent } from './compbox-list/compbox-list.component';
 import { IonicModule } from '@ionic/angular';
+import { ComplaintComponent } from './complaint/complaint.component';
 @NgModule({
     declarations: [
         ComplaintBoxComponent,
+        ComplaintComponent,
         AtikramanComponent,
         AtikramanRegtokanComponent,
         CompboxListComponent
@@ -21,7 +23,7 @@ import { IonicModule } from '@ionic/angular';
         CommonModule,
         FormsModule
     ],
-    exports: []
+    exports: [ComplaintBoxComponent]
 
 })
 

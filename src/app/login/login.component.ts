@@ -12,6 +12,14 @@ import { File } from '@ionic-native/file/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import {
+    Plugins,
+    PushNotification,
+    PushNotificationToken,
+    PushNotificationActionPerformed } from '@capacitor/core';
+  
+  const { PushNotifications } = Plugins;
+  
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -185,6 +193,38 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+        //Push Notification *************************
+        PushNotifications.register();
+
+        // On success, we should be able to receive notifications
+        PushNotifications.addListener('registration', 
+          (token: PushNotificationToken) => {
+            alert('Push registration success, token: ' + token.value);
+          }
+        );
+    
+        // Some issue with our setup and push will not work
+        PushNotifications.addListener('registrationError', 
+          (error: any) => {
+            alert('Error on registration: ' + JSON.stringify(error));
+          }
+        );
+    
+        // Show us the notification payload if the app is open on our device
+        PushNotifications.addListener('pushNotificationReceived', 
+          (notification: PushNotification) => {
+            alert('Push received: ' + JSON.stringify(notification));
+          }
+        );
+    
+        // Method called when tapping on a notification
+        PushNotifications.addListener('pushNotificationActionPerformed', 
+          (notification: PushNotificationActionPerformed) => {
+            alert('Push action performed: ' + JSON.stringify(notification));
+          }
+        );
+
     }
 
     // convenience getter for easy access to form fields
