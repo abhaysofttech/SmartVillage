@@ -12,9 +12,19 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path:'complaint',
+    loadChildren:() => import('./_modules/complaint-box/complaint-box.module').then(m => m.ComplaintBoxModule)
+  },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+  
 ];
 
 @NgModule({

@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private userService: UserService
     ) {
-        debugger
         this.currentUser = this.authenticationService.currentUserValue;
     }
 

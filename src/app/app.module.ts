@@ -27,7 +27,8 @@ import { Base64 } from '@ionic-native/base64/ngx';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+
   ],
   entryComponents: [],
   imports: [

@@ -17,9 +17,29 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
+      title: 'Update Password',
       url: '/list',
-      icon: 'list'
+      icon: 'open'
+    },
+    {
+      title: 'Share App',
+      url: '/list',
+      icon: 'share'
+    },
+    {
+      title: 'Rate App',
+      url: '/list',
+      icon: 'pulse'
+    },
+    {
+      title: 'Contact Us',
+      url: '/list',
+      icon: 'contact'
+    },
+    {
+      title: 'Logout',
+      url: '/list',
+      icon: 'log-out'
     }
   ];
 

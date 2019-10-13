@@ -24,7 +24,134 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
+ion-toolbar{
+    --min-height: 15px !important;
+    color: #fff;
+    --background: linear-gradient(90deg, #088b98, #2c4d8e) !important;
+}
+ion-title{
+    font-size: 1rem;
+}
+ion-menu-button{
+    height: 40px;
+}
+.sidemenu-title{
+    padding: 8px 20px;
+}
+.swiper-pagination-bullet {
+    background: #0a0a0a;
+    opacity: 0.7;
+}
+.swiper-pagination-bullet-active {
+    background: #3880ff;
+}
 .form-control{
     font-size: .9rem !important;
 }
+.border-red{
+    border: 1px solid red;
+}
+.border-blue{
+    border: 1px solid blue;
+}
+.no-margin{
+    margin: 0px !important;
+}
+.no-padding{
+    padding: 0px !important;
+}
+.top-margin10{
+    margin-top: 10px !important;
+}
+.bottom-margin10{
+    margin-bottom: 10px !important;
+}
+.padding10{
+    padding: 10px !important;
+}
+.padding5{
+    padding: 5px !important;
+}
+.header-section{
+    display: flex;
+    align-items: center;
+}
+.header-part{
+    background-image: linear-gradient(to right, #f36d14, #f80c0c);
+    color: #f7f6f4;
+    font-size: 14px;
+    padding: 10px 0px;
+}
+.center-item{
+    display: flex;
+    align-items: center;
+}
+.icon-header {
+    color: #f8f5f5;
+    // margin-right: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    // margin-top: 0px;
+}
+.header-part span{
+    margin-left: 10px;
+}
+
+.header-bg{
+    background-color: #20c0f1 !important;
+}
+
+.header-lbl{
+    color: rgb(248, 245, 245);
+    position: absolute;
+    top: 8px;
+}
+.lbl-txt{
+    color: #f8f5f5;
+    margin-left: 29px;
+    margin-top: 10px;
+    font-size: 13px;
+}
+.go-next{
+    // background-image: linear-gradient(to right, #f36d14, #f80c0c);
+    background-color: #0799a5;
+    color: rgb(247, 246, 244); 
+    text-align: center;
+    font-size: 13px;
+    padding: 10px !important;
+    position: absolute;
+    // bottom: 0;
+    width: 100%;
+ }
+ .footer-part{
+    background-color: #0799a5;
+    color: rgb(247, 246, 244); 
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+ }
+//  ********compnbox-list and helpline number pg************
+.complbox-list{
+    padding: 5px !important;
+    background-color: #f7ebe3;
+}
+.complbox-list span{
+    font-size: 13px;
+    line-height: 30px !important;
+}
+.sub-listbox h5{
+    color: #f56905;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 0px 0px 0px;
+}
+.sub-listbox h6{
+    color: #9c9a9a;
+    font-size: 13px;
+    // font-family: KrutiDev !important;
+
+    // line-height: 10px !important;
+}
+
+ 
