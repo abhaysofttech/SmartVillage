@@ -1,87 +1,45 @@
 <ion-header>
-  <div class="row no-margin header-part">
-    <div class="col-12 border-gray center-item">
+  <div class="row no-margin header-part" [routerLink]="['/atikraman-regtokan']">
+    <div class="col-12 center-item">
         <ion-icon name="arrow-back" class="icon-header"></ion-icon>
-        <span class="hindiFont">
-          My complaint list
+        <span>
+          Atikraman page
         </span>
     </div>
-    <div class="col-12">
-      <label class="lbl-txt">Please register your complaint</label>
-  </div>
   </div>
 </ion-header>
-
 <ion-content>
-  <form>
-      <div class="row no-margin">
-        <div class="col-12 atikr-compl-box">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body" style="padding: 10px 10px 0px 10px;background-color: #f7ebe3;">
-
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Enter Your Name</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" style="font-size: 13px;">
-            </div>
-
-              <div class="form-group btn-drop">
-                  <label for="exampleFormControlSelect1">Enter Your Complaints Name</label>
-                  <select class="form-control" style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;" id="exampleFormControlSelect1">
-                    <option>select</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-
-                <div class="form-group btn-drop">
-                    <label for="exampleFormControlSelect1">Enter Your area Name</label>
-                    <select class="form-control" style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;" id="exampleFormControlSelect1">
-                      <option>select</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                <div class="form-group btn-drop">
-                    <label for="inputPassword5" class="">Photo of complaint</label>
-                    <div class="btn-group" style="margin-bottom: 0px !important;">
-                        <div class="input-group mb-3">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" style="width: 100% !important;" id="inputGroupFile02">
-                              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Date of complaints</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="01-10-2019" style="font-size: 13px;">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Complaint details</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-
+  <div class="row no-margin">
+    <div class="col-12">
+        <div class="card top-margin10 bottom-margin10" style=" width: 18rem;">
+            <div class="card-body ati-regtokn" style="background-color: #f7ebe3;">
+              <span>Your complaint successfully registered</span>
+              <span>Your token number is 4600</span>
             </div>
           </div>
-        </div>
+      </div>     
+    </div>
+    <div class="row no-margin" >
+      <div class="col-6 " style="width: 100%; padding: 0px 1px 0px 15px;" [routerLink]="['/atikraman']">
+          <button type="button" class="btn btn-primary btn-sm btn-newCompl" style="width: 100%; background-color: #0799a5;">New Complaint</button>
       </div>
-      <!-- <div class="row no-margin go-next" [routerLink]="['/atikraman-regtokan']">
-        <div class="col-12">
-            <span>Submit</span>
-        </div>
-      </div> -->
-    </form>
+      <div class="col-6 " style="width: 100%; padding: 0px 15px 0px 1px;" [routerLink]="['/compbox-list']">
+          <button type="button" class="btn btn-primary btn-sm btn-newCompl" style="width: 100%; background-color: #0799a5;">My Complaint</button>
+      </div>
+    </div>
+    
+    <!-- <div class="row no-margin footer-btn" [routerLink]="['/dashboard']">
+      <div class="col-12" style="">
+          <button type="button" class="btn btn-primary btn-sm " style="background-color: #0799a5;border: 0px solid gray;">Go to dashboard</button>
+
+      </div>
+    </div> -->
 
 </ion-content>
-
-<ion-footer class="footer-part" [routerLink]="['/atikraman-regtokan']">
-    <div class="row no-margin go-next">
-        <div class="col-12">
-            <span>submit</span>
-        </div>
+<ion-footer class="footer-part" [routerLink]="['/dashboard']">
+  <div class="row no-margin go-next">
+      <div class="col-12">
+          <span>Go to dashboard</span>
       </div>
+    </div>
 </ion-footer>
