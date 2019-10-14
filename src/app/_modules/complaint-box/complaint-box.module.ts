@@ -9,13 +9,15 @@ import { AtikramanRegtokanComponent } from './atikraman-regtokan/atikraman-regto
 import { CompboxListComponent } from './compbox-list/compbox-list.component';
 import { IonicModule } from '@ionic/angular';
 import { ComplaintComponent } from './complaint/complaint.component';
+import { ComplaintRegisterComponent } from 'src/app/_components';
 @NgModule({
     declarations: [
         ComplaintBoxComponent,
         ComplaintComponent,
         AtikramanComponent,
         AtikramanRegtokanComponent,
-        CompboxListComponent
+        CompboxListComponent,
+        ComplaintRegisterComponent
     ],
     imports: [
         ComplaintBoxRoutingModule,

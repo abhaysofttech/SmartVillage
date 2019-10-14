@@ -10,18 +10,26 @@ import { ActionSheetController } from '@ionic/angular';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
 import { formatDate } from '@angular/common';
+import { ComplainService } from '../../_services';
+
 @Component({
-  selector: 'app-atikraman',
-  templateUrl: './atikraman.component.html',
-  styleUrls: ['./atikraman.component.scss'],
+  selector: 'complaint-register',
+  templateUrl: './complaint-register.component.html',
+  styleUrls: ['./complaint-register.component.scss'],
 })
-export class AtikramanComponent implements OnInit {
-  
+export class ComplaintRegisterComponent implements OnInit {
+
+
   complainImagepath : SafeResourceUrl;
   profilePicBase64 : string;
-  today = new Date();
+  //today = new Date();
+  complainType : any;
+  subcomplainType : any;
+  subcomplaintype: any;
+
   todayDate = '';
   constructor(
+    private complainService: ComplainService,
     private imagePicker: ImagePicker,
     private camera: Camera,
     private crop: Crop,
@@ -30,12 +38,39 @@ export class AtikramanComponent implements OnInit {
     private base64: Base64,
     private sanitizer: DomSanitizer
   ) { 
-    this.todayDate = formatDate(this.today, 'dd-MMM-yyyy hh:mm:ss a', 'en-US', '+0530');
+    setInterval(() => {
+      this.todayDate = formatDate(new Date(), 'dd-MMM-yyyy hh:mm:ss a', 'en-US', '+0530');
+    }, 1);
   }
 
   ngOnInit() {
     this.complainImagepath = 'assets/imgs/ImagePlaceholder.jpg';
+    debugger;
+    this.complainService.getcomplainname()
+    .subscribe(
+        data => {
+          this.complainType = data;
+        },
+        error => {
+          console.log(error);
+            
+        });
+  }
+  changecomplainType(complainType) {
+    debugger
+   // this.cities = this.countryList.find(con => con.name == count).cities;
+   console.log(complainType);
+   this.complainService.getsubcomplainname(complainType)
+   .subscribe(
+       data => {
+         this.subcomplainType = data;
+         console.log(data);
 
+       },
+       error => {
+         console.log(error);
+           
+       });
   }
 
    // code to get the profile image

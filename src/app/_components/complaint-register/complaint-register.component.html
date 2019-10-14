@@ -1,0 +1,62 @@
+<form>
+  <div class="row no-margin">
+    <div class="col-12 atikr-compl-box">
+      <div class="card">
+        <div class="card-body" style="padding: 10px 10px 0px 10px;background-color: #f7ebe3;">
+
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Enter Your Name</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" style="font-size: 13px;">
+        </div>
+
+          <div class="form-group btn-drop">
+              <label for="exampleFormControlSelect1">Enter Your Complaints Name</label>
+              <select class="form-control" (change)="changecomplainType($event.target.value)" style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;" id="exampleFormControlSelect1">
+                <option *ngFor="let complainType of complainType" value="{{complainType.complainname}}">{{complainType.complainTitle}}</option>
+              </select>
+            </div>
+
+            <div class="form-group btn-drop">
+                <label for="exampleFormControlSelect1">Enter Your area Name</label>
+                <select class="form-control" style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;" id="exampleFormControlSelect1">
+                  <option *ngFor="let subcomplainType of subcomplainType" value="{{subcomplainType.subcomplainname}}">{{subcomplainType.subcomplainTitle}}</option>
+                </select>
+              </div>
+            <div class="form-group btn-drop">
+                <label for="inputPassword5" class="">Photo of complaint</label>
+                <!-- <div class="btn-group" style="margin-bottom: 0px !important;">
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" style="width: 100% !important;" id="inputGroupFile02">
+                          <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                        </div>
+                      </div>
+                </div> -->
+                <img [src]="complainImagepath" class="complainImage" (click)="selectImage()">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date of complaints</label>
+                <input type="datetime" class="form-control" id="exampleFormControlInput1" [value]="todayDate" style="font-size: 13px;" readonly>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Complaint details</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row no-margin go-next" [routerLink]="['/atikraman-regtokan']">
+    <div class="col-12">
+        <span>Submit</span>
+    </div>
+  </div>
+</form>
+<!-- <ion-footer class="footer-part" [routerLink]="['/atikraman-regtokan']">
+  <div class="row no-margin go-next">
+      <div class="col-12">
+          <span>submit</span>
+      </div>
+    </div>
+</ion-footer> -->
