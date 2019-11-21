@@ -1,0 +1,59 @@
+
+<div class="wrapper">
+  <div class="sidebar">
+    <!-- <app-sidebar-cmp></app-sidebar-cmp> -->
+  </div>
+  <div class="main-panel">
+    <div class="main-content">
+      <div class="container-fluid">
+
+        <div class="login-reg-panel back2">
+          <form [formGroup]="subcomplainregisterForm" (ngSubmit)="onSubmit()">
+            <div class="white-panel">
+              <div class="login-pannel">
+                <div class="login-show">
+                  <div class="reg-title ">
+                    <span>Register Your State Division</span>
+                   
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <select formControlName="complainname" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.complainname.errors }"
+                      style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+                      <option *ngFor="let complain of complainList" value="{{complain.complainname}}">
+                        {{complain.complainname}}</option>
+                    </select>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="subcomplainname" class="form-control"
+                      placeholder="Enter Your Sub-Complain Name"
+                      [ngClass]="{ 'is-invalid': submitted && f.subcomplainname.errors }" />
+                    <div *ngIf="submitted && f.subcomplainname.errors" class="invalid-feedback">
+                      <div *ngIf="f.subcomplainname.errors.required">Please Enter Sub-complain Name</div>
+                    </div>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="subcomplainTitle" class="form-control"
+                      placeholder="Enter Your Sub-Complain Name"
+                      [ngClass]="{ 'is-invalid': submitted && f.subcomplainTitle.errors }" />
+                    <div *ngIf="submitted && f.subcomplainTitle.errors" class="invalid-feedback">
+                      <div *ngIf="f.subcomplainTitle.errors.required">Please Enter Sub-complain Title</div>
+                    </div>
+                  </div>
+                
+
+                  <div class="signin-sec margin-top">
+                    <input type="submit" [disabled]="loading" class="form-control connect-btn" name="Register"
+                      value="Register">
+                    <input type="button" [disabled]="loading" class="form-control back-btn" name="Cancel"
+                      routerLink="/admin/dashboard" value="Cancel">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

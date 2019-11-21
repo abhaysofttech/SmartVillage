@@ -7,14 +7,14 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, MenuController } from '@ionic/angular';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('smartvillageusers')) || [];
 
 
-import { AlertService, UserService, AuthenticationService } from '../_services';
+import { AlertService, UserService, AuthenticationService } from '../../_services';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private imagePicker: ImagePicker,
+    public menuCtrl: MenuController,
     private camera: Camera,
     private crop: Crop,
     public actionSheetController: ActionSheetController,
@@ -42,10 +43,10 @@ export class RegisterComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     // redirect to home if already logged in
-    debugger
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
     }
+    this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
@@ -88,13 +89,28 @@ export class RegisterComponent implements OnInit {
         data => {
           this.registerForm.value.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
           users.push(this.registerForm.value);
-          localStorage.setItem('smartvillageusers', JSON.stringify(users));
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/home']);
+          this.authenticationService.login(this.f.phonenumber.value, this.f.password.value)
+            .pipe(first())
+            .subscribe(
+              data => {
+                debugger;
+                this.alertService.presentAlert(['Login successful', '', 'Hi ' + data.firstname + ', Welcome to my complain', 'OK']);
+                this.router.navigate(['/registervillage']);
+              },
+              error => {
+                this.alertService.error(['Login Fail', '', error]);
+                this.loading = false;
+              });
+
+          // localStorage.setItem('smartvillageusers', JSON.stringify(users));
+          // this.alertService.success('Registration successful', true);
+          // this.alertService.presentAlert(['Registration successful', '','Hi ' + this.registerForm.value.firstname + ', Welcome to my complain', 'OK']);
+
+          // this.router.navigate(['/registervillage']);
         },
         error => {
           debugger
-          this.alertService.error(error);
+          this.alertService.error(['Register Fail', '', error]);
           this.loading = false;
         });
   }

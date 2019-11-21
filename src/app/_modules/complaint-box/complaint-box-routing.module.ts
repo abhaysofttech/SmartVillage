@@ -11,7 +11,7 @@ const ComplaintBoxRoutes: Routes = [{
     component: ComplaintBoxComponent,
     children: [
         { path: 'dash', component: ComplaintComponent },
-        { path: 'atikraman', component: AtikramanComponent },
+        { path: 'atikraman/:id', component: AtikramanComponent },
         { path: 'atikraman-regtokan', component: AtikramanRegtokanComponent },
         { path: 'compbox-list', component: CompboxListComponent },
     ]

@@ -10,9 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor, ErrorInterceptor, BackendProvider } from './_helpers';
-import { AlertComponent } from './_components';
+import { AlertComponent, SideMenuComponent, IconComponent } from './_components';
 import { HomeComponent } from './_modules';
 import { LoginComponent } from './login/login.component';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
@@ -20,6 +19,11 @@ import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { AdminComponent } from './Admin/admin.component';
+import { RegisterComponent } from './Users/register/register.component';
+import { RegisterVillageComponent } from './Users/register-village/register-village.component';
+import { NetworkService } from './_services';
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { Base64 } from '@ionic-native/base64/ngx';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    RegisterVillageComponent,
     AlertComponent,
+    SideMenuComponent
+    
 
   ],
   entryComponents: [],
@@ -36,14 +43,15 @@ import { Base64 } from '@ionic-native/base64/ngx';
     ReactiveFormsModule,
     HttpClientModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     ImagePicker,
     Crop,
     Camera,
     File,
-    Base64,
+    Base64,Network,
+    NetworkService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

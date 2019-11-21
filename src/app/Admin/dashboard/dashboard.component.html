@@ -1,0 +1,86 @@
+<ion-header>
+  <div class="row no-margin header-part">
+    <div class="col-12 border-gray center-item">
+      <ion-icon name="arrow-back" (click)="myBackButton()" class="icon-header"></ion-icon>
+      <span class="hindiFont">
+        Select Admin Options
+      </span>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div class="wrapper">
+    <div class="row no-margin">
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/stateregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>State</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/divisionregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Division</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/districtregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>District</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/tehsilregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Tehsils</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/mahanagarpalikaregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Maha-Nagarpalika</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/nagarpalikaregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Nagarpalika</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/nagarpanchayatregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>NagarPanchayat</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/grampanchayatregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Gram Panchayat</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/wardregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Ward</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/complainregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Add Complain Type</span>
+        </div>
+      </div>
+      <div class="col-6 reg-dash">
+        <div class="reg-pannel" [routerLink]="['/admin/subcomplainregister']">
+          <img src="../../../assets/imgs/blank-avatar.jpg">
+          <span>Add SubComplain Type</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

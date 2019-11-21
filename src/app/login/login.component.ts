@@ -3,27 +3,28 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, AuthenticationService } from '../_services';
+import { AlertService, AuthenticationService, UserService } from '../_services';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController, MenuController } from '@ionic/angular';
 import { Base64 } from '@ionic-native/base64/ngx';
-import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {
     Plugins,
     PushNotification,
     PushNotificationToken,
-    PushNotificationActionPerformed } from '@capacitor/core';
-  
-  const { PushNotifications } = Plugins;
-  
+    PushNotificationActionPerformed
+} from '@capacitor/core';
+
+const { PushNotifications } = Plugins;
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['../register/register.component.scss'],
+    styleUrls: ['../Users/register/register.component.scss'],
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     imgPreview = 'assets/imgs/blank-avatar.jpg';
 
-    croppedImagepath : SafeResourceUrl;
+    croppedImagepath: SafeResourceUrl;
     isLoading = false;
 
     imagePickerOptions = {
@@ -50,18 +51,22 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
+        private alertController: AlertController,
+        public menuCtrl: MenuController,
         private imagePicker: ImagePicker,
         private camera: Camera,
         private crop: Crop,
         public actionSheetController: ActionSheetController,
         private file: File,
         private base64: Base64,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private userService: UserService,
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
         }
+        this.menuCtrl.enable(false);
     }
     getPhoto() {
         let options = {
@@ -89,7 +94,7 @@ export class LoginComponent implements OnInit {
         }
         this.camera.getPicture(options).then((imageData) => {
             console.log(imageData);
-           
+
             // imageData is either a base64 encoded string or a file URI
             // If it's base64 (DATA_URL):
             // let base64Image = 'data:image/jpeg;base64,' + imageData;
@@ -142,7 +147,7 @@ export class LoginComponent implements OnInit {
         var splitPath = copyPath.split('/');
         var imageName = splitPath[splitPath.length - 1];
         var filePath = ImagePath.split(imageName)[0];
-       
+
         // this.base64.encodeFile(ImagePath).then((base64File: string) => {
         //     //   console.log(base64File);
         //  //   this.imgPreview = base64File;
@@ -168,7 +173,7 @@ export class LoginComponent implements OnInit {
         // });
         this.base64.encodeFile(ImagePath).then((base64File: string) => {
             //   console.log(base64File);
-          //  this.croppedImagepath = base64File;
+            //  this.croppedImagepath = base64File;
             this.croppedImagepath = this.sanitizer.bypassSecurityTrustResourceUrl(base64File);
 
             this.isLoading = false;
@@ -186,6 +191,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        debugger
         this.loginForm = this.formBuilder.group({
             phonenumber: ['', Validators.required],
             password: ['', Validators.required]
@@ -195,42 +201,43 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
         //Push Notification *************************
-        PushNotifications.register();
+        // PushNotifications.register();
 
-        // On success, we should be able to receive notifications
-        PushNotifications.addListener('registration', 
-          (token: PushNotificationToken) => {
-            alert('Push registration success, token: ' + token.value);
-          }
-        );
-    
-        // Some issue with our setup and push will not work
-        PushNotifications.addListener('registrationError', 
-          (error: any) => {
-            alert('Error on registration: ' + JSON.stringify(error));
-          }
-        );
-    
-        // Show us the notification payload if the app is open on our device
-        PushNotifications.addListener('pushNotificationReceived', 
-          (notification: PushNotification) => {
-            alert('Push received: ' + JSON.stringify(notification));
-          }
-        );
-    
-        // Method called when tapping on a notification
-        PushNotifications.addListener('pushNotificationActionPerformed', 
-          (notification: PushNotificationActionPerformed) => {
-            alert('Push action performed: ' + JSON.stringify(notification));
-          }
-        );
+        // // On success, we should be able to receive notifications
+        // PushNotifications.addListener('registration', 
+        //   (token: PushNotificationToken) => {
+        //     alert('Push registration success, token: ' + token.value);
+        //   }
+        // );
 
+        // // Some issue with our setup and push will not work
+        // PushNotifications.addListener('registrationError', 
+        //   (error: any) => {
+        //     alert('Error on registration: ' + JSON.stringify(error));
+        //   }
+        // );
+
+        // // Show us the notification payload if the app is open on our device
+        // PushNotifications.addListener('pushNotificationReceived', 
+        //   (notification: PushNotification) => {
+        //     alert('Push received: ' + JSON.stringify(notification));
+        //   }
+        // );
+
+        // // Method called when tapping on a notification
+        // PushNotifications.addListener('pushNotificationActionPerformed', 
+        //   (notification: PushNotificationActionPerformed) => {
+        //     alert('Push action performed: ' + JSON.stringify(notification));
+        //   }
+        // );
+     
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
+        debugger
         this.submitted = true;
 
         // reset alerts on submit
@@ -250,13 +257,19 @@ export class LoginComponent implements OnInit {
                 .pipe(first())
                 .subscribe(
                     data => {
-                        this.router.navigate([this.returnUrl]);
+                        debugger;
+                        this.alertService.presentAlert(['Login successful', '', 'Hi ' + data.firstname + ', Welcome to my complain', 'OK']);
+                        if (!data.userState || !data.userDivision || !data.userDistrict || !data.userZone || !data.userZone) {
+                            this.router.navigate(['/registervillage']);
+                        }
+                        else this.router.navigate([this.returnUrl]);
                     },
                     error => {
-                        this.alertService.error(error);
+                        this.alertService.error(['Login Fail', '', error]);
                         this.loading = false;
                     });
         }
     }
+
 }
 

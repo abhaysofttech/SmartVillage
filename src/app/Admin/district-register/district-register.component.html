@@ -1,0 +1,155 @@
+<!-- <form [formGroup]="districtregisterForm" (ngSubmit)="onSubmit()">
+  <div class="row no-margin" style="padding-bottom: 40px;">
+    <div class="col-12">
+      <label class="lbl-txt">Register your District</label>
+    </div>
+    <div class="col-12 atikr-compl-box">
+      <div class="card">
+        <div class="card-body" style="padding: 10px 10px 0px 10px;">
+          <div class="form-group">
+            <label for="statename">Select State Name</label>
+
+            <select formControlName="statename" class="form-control" (change)="changeState($event.target.value)"
+              [ngClass]="{ 'is-invalid': submitted && f.statename.errors }"
+              style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+              <option *ngFor="let state of stateList" value="{{state.statename}}">
+                {{state.statename}}</option>
+            </select>
+
+            <div *ngIf="submitted && f.statename.errors" class="invalid-feedback">
+              <div *ngIf="f.statename.errors.required">तुमचे नाव टाका </div>
+            </div>
+
+            <label for="divisionname">Select Division Name</label>
+
+            <select formControlName="divisionname" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.divisionname.errors }"
+              style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+              <option *ngFor="let division of divisionList" value="{{division.divisionname}}">
+                {{division.divisionname}}</option>
+            </select>
+
+
+            <div *ngIf="submitted && f.divisionname.errors" class="invalid-feedback">
+              <div *ngIf="f.divisionname.errors.required">तुमचे नाव टाका </div>
+            </div>
+
+            <label for="districtname">Enter District Name in Hindi</label>
+            <input type="text" formControlName="districtname" class="form-control"
+              placeholder="Enter District name"
+              [ngClass]="{ 'is-invalid': submitted && f.districtname.errors }" />
+            <div *ngIf="submitted && f.districtname.errors" class="invalid-feedback">
+              <div *ngIf="f.districtname.errors.required">तुमचे नाव टाका </div>
+            </div>
+
+            
+            <label for="districtnameHindi">Enter District Name in Hindi</label>
+            <input type="text" formControlName="districtnameHindi" class="form-control"
+              placeholder="Enter District name in Hindi"
+              [ngClass]="{ 'is-invalid': submitted && f.districtnameHindi.errors }" />
+            <div *ngIf="submitted && f.districtnameHindi.errors" class="invalid-feedback">
+              <div *ngIf="f.districtnameHindi.errors.required">तुमचे नाव टाका </div>
+            </div>
+
+            <label for="districtnameMarathi">Enter District Name in Marathi</label>
+            <input type="text" formControlName="districtnameMarathi" class="form-control"
+              placeholder="Enter District name in Marathi"
+              [ngClass]="{ 'is-invalid': submitted && f.districtnameMarathi.errors }" />
+            <div *ngIf="submitted && f.districtnameMarathi.errors" class="invalid-feedback">
+              <div *ngIf="f.districtnameMarathi.errors.required">तुमचे नाव टाका </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
+  </div>
+  <div class="row no-margin go-next">
+    <div class="col-12">
+      <input type="submit" [disabled]="loading" class="form-control connect-btn" name="Connect" value="Connect">
+      <span>Submit</span>
+    </div>
+  </div>
+  <ul>
+    <li *ngFor="let district of districtList">{{district.statename}} || {{district.districtname}}</li>
+  </ul>
+</form> -->
+
+<div class="wrapper">
+  <div class="sidebar">
+    <!-- <app-sidebar-cmp></app-sidebar-cmp> -->
+  </div>
+  <div class="main-panel">
+    <div class="main-content">
+      <div class="container-fluid">
+
+        <div class="login-reg-panel back2">
+          <form [formGroup]="districtregisterForm" (ngSubmit)="onSubmit()">
+            <div class="white-panel">
+              <div class="login-pannel">
+                <div class="login-show">
+                  <div class="reg-title ">
+                    <span>Register Your District</span>
+                    <ion-avatar item-end>
+                      <img [src]="croppedImagepath" (click)="selectImage()">
+                      <ion-icon name="camera" class="camera-icon"></ion-icon>
+                    </ion-avatar>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <select formControlName="statename" class="form-control" (change)="changeState($event.target.value)"
+                      [ngClass]="{ 'is-invalid': submitted && f.statename.errors }"
+                      style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+                      <option *ngFor="let state of stateList" value="{{state.statename}}">
+                        {{state.statename}}</option>
+                    </select>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <select formControlName="divisionname" class="form-control" (change)="changeDivision($event.target.value)"
+                      [ngClass]="{ 'is-invalid': submitted && f.divisionname.errors }"
+                      style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+                      <option>Please Select Division</option>
+                      <option *ngFor="let division of divisionList" value="{{division.divisionname}}">
+                        {{division.divisionname}}</option>
+                    </select>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="districtname" class="form-control"
+                      placeholder="Enter Your District Name"
+                      [ngClass]="{ 'is-invalid': submitted && f.districtname.errors }" />
+                    <div *ngIf="submitted && f.districtname.errors" class="invalid-feedback">
+                      <div *ngIf="f.districtname.errors.required">Please Enter District Name</div>
+                    </div>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="districtnameHindi" class="form-control"
+                      placeholder="Enter District name in Hindi"
+                      [ngClass]="{ 'is-invalid': submitted && f.districtnameHindi.errors }" />
+                    <div *ngIf="submitted && f.districtnameHindi.errors" class="invalid-feedback">
+                      <div *ngIf="f.districtnameHindi.errors.required">Please Enter District Name in Hindi</div>
+                    </div>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="districtnameMarathi" class="form-control"
+                      placeholder="Enter District name in Marathi"
+                      [ngClass]="{ 'is-invalid': submitted && f.districtnameMarathi.errors }" />
+                    <div *ngIf="submitted && f.districtnameMarathi.errors" class="invalid-feedback">
+                      <div *ngIf="f.districtnameMarathi.errors.required">Please Enter District Name in Marathi</div>
+                    </div>
+                  </div>
+
+                  <div class="signin-sec margin-top">
+                    <input type="submit" [disabled]="loading" class="form-control connect-btn" name="Register"
+                      value="Register">
+                    <input type="button" [disabled]="loading" class="form-control back-btn" name="Cancel"
+                      routerLink="/admin/dashboard" value="Cancel">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

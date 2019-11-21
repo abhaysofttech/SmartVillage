@@ -9,7 +9,8 @@ import { File } from '@ionic-native/file/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
-import { formatDate } from '@angular/common';
+import { formatDate,Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-atikraman',
   templateUrl: './atikraman.component.html',
@@ -28,16 +29,20 @@ export class AtikramanComponent implements OnInit {
     public actionSheetController: ActionSheetController,
     private file: File,
     private base64: Base64,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private location: Location,
+    private route: ActivatedRoute
   ) { 
     this.todayDate = formatDate(this.today, 'dd-MMM-yyyy hh:mm:ss a', 'en-US', '+0530');
   }
 
   ngOnInit() {
     this.complainImagepath = 'assets/imgs/ImagePlaceholder.jpg';
-
+   
   }
-
+  myBackButton(){
+    this.location.back();
+  }
    // code to get the profile image
    pickImage(sourceType) {
     console.log(sourceType);

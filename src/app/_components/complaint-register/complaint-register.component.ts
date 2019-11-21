@@ -8,9 +8,10 @@ import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { Base64 } from '@ionic-native/base64/ngx';
-import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { formatDate } from '@angular/common';
 import { ComplainService } from '../../_services';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'complaint-register',
@@ -20,12 +21,12 @@ import { ComplainService } from '../../_services';
 export class ComplaintRegisterComponent implements OnInit {
 
 
-  complainImagepath : SafeResourceUrl;
-  profilePicBase64 : string;
+  complainImagepath: SafeResourceUrl;
+  profilePicBase64: string;
   //today = new Date();
-  complainType : any;
-  subcomplainType : any;
-  subcomplaintype: any;
+  complainType: any;
+  subcomplainType: any;
+
 
   todayDate = '';
   constructor(
@@ -36,8 +37,9 @@ export class ComplaintRegisterComponent implements OnInit {
     public actionSheetController: ActionSheetController,
     private file: File,
     private base64: Base64,
-    private sanitizer: DomSanitizer
-  ) { 
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute
+  ) {
     setInterval(() => {
       this.todayDate = formatDate(new Date(), 'dd-MMM-yyyy hh:mm:ss a', 'en-US', '+0530');
     }, 1);
@@ -45,36 +47,40 @@ export class ComplaintRegisterComponent implements OnInit {
 
   ngOnInit() {
     this.complainImagepath = 'assets/imgs/ImagePlaceholder.jpg';
-    debugger;
     this.complainService.getcomplainname()
-    .subscribe(
+      // .subscribe(
+      //   data => {
+      //     this.complainType = data;
+      //     this.changecomplainType(this.complainType[0].complainname);
+      //   },
+      //   error => {
+      //     console.log(error);
+
+      //   });
+        this.route.paramMap.subscribe(params => {
+          console.log(params);
+          this.changecomplainType(params['params'].id);
+         });
+     
+  }
+  changecomplainType(complainType) {
+    // this.cities = this.countryList.find(con => con.name == count).cities;
+    console.log(complainType);
+    this.complainService.getsubcomplainname(complainType)
+      .subscribe(
         data => {
-          this.complainType = data;
+          this.subcomplainType = data;
+          console.log(data);
+
         },
         error => {
           console.log(error);
-            
+
         });
   }
-  changecomplainType(complainType) {
-    debugger
-   // this.cities = this.countryList.find(con => con.name == count).cities;
-   console.log(complainType);
-   this.complainService.getsubcomplainname(complainType)
-   .subscribe(
-       data => {
-         this.subcomplainType = data;
-         console.log(data);
 
-       },
-       error => {
-         console.log(error);
-           
-       });
-  }
-
-   // code to get the profile image
-   pickImage(sourceType) {
+  // code to get the profile image
+  pickImage(sourceType) {
     console.log(sourceType);
     const options: CameraOptions = {
       quality: 100,
@@ -139,7 +145,7 @@ export class ComplaintRegisterComponent implements OnInit {
       console.log(err);
     });
 
-  
+
   }
 
 }

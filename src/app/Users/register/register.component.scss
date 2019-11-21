@@ -163,7 +163,7 @@ body {
     margin: 5px 0;
     outline: none;
     border-radius: 51px;
-    display: -webkit-inline-box;
+    display: inline-block;
     -webkit-box-align: center;
     height: 49px;
     border: none;
@@ -380,7 +380,7 @@ body {
         float: left;
         background-position: center;
         background-size: cover;
-        background-image: linear-gradient(90deg, rgba(8, 139, 152, 0.6392156862745098), rgba(44, 77, 142, 0.48)),url('../../assets/imgs/background.jpg');
+        background-image: linear-gradient(90deg, rgba(8, 139, 152, 0.6392156862745098), rgba(44, 77, 142, 0.48)),url('../../../assets/imgs/background.jpg');
     }
     .login-show{
       padding: 1rem;
@@ -391,18 +391,22 @@ body {
       font-size: 14px;
       // margin-top: 99px !important;
       // text-align: center !important;
-       position: absolute; 
+      //  position: absolute; 
        bottom: 4rem;
        left: 0; 
        right: 0; 
     }
+    .ConnectBtn{
+      width: 60% !important;
+  }
+  .AdminBtn{
+      width:40% !important;    background-color: #00455e !important;
+  }
     .reg-btn{
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      right: 1rem;
       line-height: 15px;
       text-align: center;
+      position: relative;
+      margin-top: 10rem;
     }
     .login-title{
       span{

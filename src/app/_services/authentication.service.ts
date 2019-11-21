@@ -17,11 +17,11 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         return this.currentUserSubject.value;
     }
 
     login(phonenumber, password) {
-        debugger
         return this.http.post<any>(`${SERVER_URL}/users/authenticate`, { phonenumber, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes

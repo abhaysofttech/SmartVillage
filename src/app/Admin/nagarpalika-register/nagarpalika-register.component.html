@@ -1,0 +1,90 @@
+<div class="wrapper">
+  <div class="sidebar">
+    <!-- <app-sidebar-cmp></app-sidebar-cmp> -->
+  </div>
+  <div class="main-panel">
+    <div class="main-content">
+      <div class="container-fluid">
+
+        <div class="login-reg-panel back2">
+          <form [formGroup]="nagarpalikaregisterForm" (ngSubmit)="onSubmit()">
+            <div class="white-panel">
+              <div class="login-pannel">
+                <div class="login-show">
+                  <div class="reg-title ">
+                    <span>Register Your Nagarpalika</span>
+                    <ion-avatar item-end>
+                      <img [src]="croppedImagepath" (click)="selectImage()">
+                      <ion-icon name="camera" class="camera-icon"></ion-icon>
+                    </ion-avatar>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <select formControlName="statename" class="form-control" (change)="changeState($event.target.value)"
+                      [ngClass]="{ 'is-invalid': submitted && f.statename.errors }"
+                      style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+                      <option *ngFor="let state of stateList" value="{{state.statename}}">
+                        {{state.statename}}</option>
+                    </select>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <select formControlName="divisionname" class="form-control"
+                      (change)="changeDivision($event.target.value)"
+                      [ngClass]="{ 'is-invalid': submitted && f.divisionname.errors }"
+                      style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+                      <option>Please Select Division</option>
+                      <option *ngFor="let division of divisionList" value="{{division.divisionname}}">
+                        {{division.divisionname}}</option>
+                    </select>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <select formControlName="districtname" class="form-control"
+                      (change)="changeDistrict($event.target.value)"
+                      [ngClass]="{ 'is-invalid': submitted && f.districtname.errors }"
+                      style="background-color: #eae6e6; font-size: 14px; border: 1px solid #bdb9b9; color: #3a3737;">
+                      <option>Please Select District</option>
+                      <option *ngFor="let district of districtList" value="{{district.districtname}}">
+                        {{district.districtname}}</option>
+                    </select>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="nagarpalikaname" class="form-control"
+                      placeholder="Enter Your Maha-Nagarpalika Name"
+                      [ngClass]="{ 'is-invalid': submitted && f.nagarpalikaname.errors }" />
+                    <div *ngIf="submitted && f.nagarpalikaname.errors" class="invalid-feedback">
+                      <div *ngIf="f.nagarpalikaname.errors.required">Please Enter Maha-Nagarpalika Name</div>
+                    </div>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="nagarpalikanameHindi" class="form-control"
+                      placeholder="Enter Maha-Nagarpalika name in Hindi"
+                      [ngClass]="{ 'is-invalid': submitted && f.nagarpalikanameHindi.errors }" />
+                    <div *ngIf="submitted && f.nagarpalikanameHindi.errors" class="invalid-feedback">
+                      <div *ngIf="f.nagarpalikanameHindi.errors.required">Please Enter Maha-Nagarpalika Name in
+                        Hindi</div>
+                    </div>
+                  </div>
+                  <div class="login-sec"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    <input type="text" formControlName="nagarpalikanameMarathi" class="form-control"
+                      placeholder="Enter Maha-Nagarpalika name in Marathi"
+                      [ngClass]="{ 'is-invalid': submitted && f.nagarpalikanameMarathi.errors }" />
+                    <div *ngIf="submitted && f.nagarpalikanameMarathi.errors" class="invalid-feedback">
+                      <div *ngIf="f.nagarpalikanameMarathi.errors.required">Please Enter Maha-Nagarpalika Name in
+                        Marathi</div>
+                    </div>
+                  </div>
+
+                  <div class="signin-sec margin-top">
+                    <input type="submit" [disabled]="loading" class="form-control connect-btn" name="Register"
+                      value="Register">
+                    <input type="button" [disabled]="loading" class="form-control back-btn" name="Cancel"
+                      routerLink="/admin/dashboard" value="Cancel">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

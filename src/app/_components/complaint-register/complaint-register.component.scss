@@ -9,15 +9,13 @@
 .no-padding{
     padding: 0px !important;
 }
-.atikr-compl-box{
-    margin: 10px 0px;
-}
+
 .btn-drop{
     width: 100%;
     margin-bottom: 10px;
 }
 .atikr-compl-box label{
-    color: #f56905;
+    color: #076f7f;
     font-size: 13px;
     margin: 5px 0px;
 }
@@ -50,4 +48,24 @@
     display: block;
     margin: 0 auto;
     padding: .5rem;
+}
+.go-next {
+    background-color: #0799a5;
+    color: #f7f6f4;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px !important;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.lbl-txt {
+    color: #f8f5f5;
+    margin-top: 10px;
+    font-size: 13px;
+    display: block;
+    background: #5d1f9b;
+    background-image: linear-gradient(to right, #5d1f9b, #a20a8c);
+    padding: 10px;
+    // border-radius: 5px;
 }

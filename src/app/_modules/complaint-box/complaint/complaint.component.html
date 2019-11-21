@@ -13,11 +13,11 @@
 <ion-card>
     <div class="row no-margin">
 
-          <div class="col-6 no-padding col6-box col6-color1" [routerLink]="['/complaint/atikraman']">
-              <div class="compl-box compl-box-color1">
-                  <div class="sub-compl-box sub-compl-box-colr1">
-                      <img src="../../../assets/logos/1.png">
-                      <span>अतिक्रमण</span>
+          <div class="col-6 no-padding col6-box" [routerLink]="['/complaint/atikraman',complainCategory.complainname]"  *ngFor="let complainCategory of complainRegType">
+              <div class="compl-box">
+                  <div class="sub-compl-box">
+                      <img src="../../../assets/logos/{{complainCategory.complainname}}.png">
+                      <span>{{complainCategory.complainTitle}}</span>
                   </div>
                   
               </div>

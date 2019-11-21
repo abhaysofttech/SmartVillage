@@ -128,3 +128,34 @@
 }
 
 
+
+$colors: #056384, #f58b11, #f5112b, #09b0ea, #08c37a, #e80d81, #95d40e, #d46f0e;
+$back-colors: #046588, #e8810a, #da0c24, #099cd0, #0ca96c, #cc0870, #75a908, #d46f0e;
+$outer-colors: #047ba5, #f9a748, #f74156, #46c6f3, #2ee09b, #f16bb2, #b6f72b, #f89b41;
+$borderColors: #078ebf, #ef7718, #c51227, #0684b1, #199c69, #b10761, #6b9219, #d46f0e;
+
+@each $current-color in $colors {
+    $i: index($colors, $current-color);
+    .col6-box:nth-of-type(#{$i}) { 
+        background-color: $current-color;
+    }
+}
+
+@each $current-color in $borderColors {
+    $i: index($borderColors, $current-color);
+    .col6-box:nth-of-type(#{$i}) > * > .sub-compl-box { 
+        border: 1px solid  $current-color;
+    }
+}
+@each $current-color in $back-colors {
+    $i: index($back-colors, $current-color);
+    .col6-box:nth-of-type(#{$i}) > * > .sub-compl-box { 
+        background-color: $current-color;
+    }
+}
+@each $current-color in $outer-colors {
+    $i: index($outer-colors, $current-color);
+    .col6-box:nth-of-type(#{$i}) > .compl-box  { 
+        background-color: $current-color;
+    }
+}
